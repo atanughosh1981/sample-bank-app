@@ -1,0 +1,59 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="bankAccount">
+            <h2><span>Bank Account</span> {{bankAccount.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Username</span></dt>
+                <dd>
+                    <span>{{bankAccount.username}}</span>
+                </dd>
+                <dt><span>Password</span></dt>
+                <dd>
+                    <span>{{bankAccount.password}}</span>
+                </dd>
+                <dt><span>First Name</span></dt>
+                <dd>
+                    <span>{{bankAccount.firstName}}</span>
+                </dd>
+                <dt><span>Last Name</span></dt>
+                <dd>
+                    <span>{{bankAccount.lastName}}</span>
+                </dd>
+                <dt><span>Email</span></dt>
+                <dd>
+                    <span>{{bankAccount.email}}</span>
+                </dd>
+                <dt><span>Phone</span></dt>
+                <dd>
+                    <span>{{bankAccount.phone}}</span>
+                </dd>
+                <dt><span>Address</span></dt>
+                <dd>
+                    <span>{{bankAccount.address}}</span>
+                </dd>
+                <dt><span>Postal Code</span></dt>
+                <dd>
+                    <span>{{bankAccount.postalCode}}</span>
+                </dd>
+                <dt><span>Pan Number</span></dt>
+                <dd>
+                    <span>{{bankAccount.panNumber}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/bank-account', bankAccount.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

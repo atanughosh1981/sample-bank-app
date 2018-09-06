@@ -1,0 +1,70 @@
+<div>
+    <h2 id="page-heading">
+        <span>Bank Accounts</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-bank-account" [routerLink]="['/bank-account/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span >
+            Create new Bank Account
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="bankAccounts">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Username</span></th>
+            <th><span>Password</span></th>
+            <th><span>First Name</span></th>
+            <th><span>Last Name</span></th>
+            <th><span>Email</span></th>
+            <th><span>Phone</span></th>
+            <th><span>Address</span></th>
+            <th><span>Postal Code</span></th>
+            <th><span>Pan Number</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let bankAccount of bankAccounts ;trackBy: trackId">
+                <td><a [routerLink]="['/bank-account', bankAccount.id, 'view' ]">{{bankAccount.id}}</a></td>
+                <td>{{bankAccount.username}}</td>
+                <td>{{bankAccount.password}}</td>
+                <td>{{bankAccount.firstName}}</td>
+                <td>{{bankAccount.lastName}}</td>
+                <td>{{bankAccount.email}}</td>
+                <td>{{bankAccount.phone}}</td>
+                <td>{{bankAccount.address}}</td>
+                <td>{{bankAccount.postalCode}}</td>
+                <td>{{bankAccount.panNumber}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/bank-account', bankAccount.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/bank-account', bankAccount.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'bank-account/'+ bankAccount.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
